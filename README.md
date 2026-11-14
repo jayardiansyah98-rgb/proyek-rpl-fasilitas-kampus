@@ -2,9 +2,24 @@
 
 Aplikasi web manajemen sarana dan prasarana kampus berbasis **PHP Native (Arsitektur MVC)**, **MySQL (Normalisasi 3NF)**, **Bootstrap 5**, dan dilengkapi modul **Kecerdasan Buatan (AI)** untuk analisis kerusakan serta rekomendasi pemeliharaan prioritas.
 
+## 👥Identitas Kelompok
+
+- Kelompok : Kere Hore
+- Kelas : TI-1D-REGULER
+- Dosen Pengampu : Yudhistira Arie Wijaya, M.Kom
+
+## 👥👥Anggota Kelompok
+
+- Ketua : Fajar Ma'ruf (41257191)
+- Anggota 1 : Eggi Alivia Rohmaht (41257187)
+- Anggota 2 : Leo Ardiansyah Jailani (41257201)
+- Anggota 3 : Daryell Zhafranabil Saren (41257184)
+- Anggota 4 : Fakhri Fadlurrohman Rahmadani (41257192)
+
 ---
 
 ## 📋 Daftar Isi
+
 1. [Fitur Utama Sistem](#-fitur-utama-sistem)
 2. [Arsitektur & Struktur Direktori](#-arsitektur--struktur-direktori)
 3. [Daftar Rute Utama (Routing Table)](#-daftar-rute-utama-routing-table)
@@ -42,7 +57,7 @@ Aplikasi web manajemen sarana dan prasarana kampus berbasis **PHP Native (Arsite
    - Dashboard Civitas Pengguna: ringkasan ruangan tersedia, fasilitas publik, dan status tindak lanjut tiket pribadi.
 7. **Cetak & Ekspor Dokumen Laporan**:
    - Laporan multi-kriteria (inventaris fasilitas, ruangan, rekapitulasi kerusakan, dan histori pemeliharaan).
-   - Format cetak ramah printer (*print-optimized view*).
+   - Format cetak ramah printer (_print-optimized view_).
 8. **Modul Kecerdasan Buatan (AI)**:
    - **AI Assistant Chatbot**: Konsultasi berbasis bahasa natural dengan whitelist parameterized query (anti-SQL Injection dan anti-halusinasi).
    - **AI Facility Analyzer**: Deteksi anomali umur aset, gedung/ruangan dengan frekuensi kerusakan tertinggi, dan identifikasi pola kerusakan.
@@ -141,75 +156,76 @@ Fasilitas Kampus/
 
 ## 🗺️ Daftar Rute Utama (Routing Table)
 
-Aplikasi menggunakan URL bersih (*Clean URL*) yang diuraikan oleh `App.php`:
+Aplikasi menggunakan URL bersih (_Clean URL_) yang diuraikan oleh `App.php`:
 
-| URL Route | Controller & Method | Metode HTTP | Hak Akses (Role) | Keterangan |
-|---|---|---|---|---|
-| `/` atau `/home` | `HomeController::index` | GET | Publik | Landing page sistem & statistik ringkas |
-| `/auth/login` | `AuthController::login` | GET, POST | Publik | Form login & proses verifikasi kredensial |
-| `/auth/logout` | `AuthController::logout` | GET, POST | Terautentikasi | Mengakhiri sesi dan regenerasi session ID |
-| `/dashboard` | `DashboardController::index` | GET | Semua Role | Dashboard analitik sesuai peran pengguna |
-| `/gedung` | `GedungController::index` | GET | Semua Role | Daftar seluruh gedung kampus |
-| `/gedung/detail/{id}` | `GedungController::detail` | GET | Semua Role | Rincian gedung & ruangan di dalamnya |
-| `/gedung/tambah` | `GedungController::tambah` | GET, POST | Admin | Tambah master data gedung baru |
-| `/gedung/edit/{id}` | `GedungController::edit` | GET, POST | Admin | Edit informasi gedung |
-| `/gedung/hapus/{id}` | `GedungController::hapus` | GET (CSRF) | Admin | Hapus gedung (dilindungi relasi ruangan) |
-| `/ruangan` | `RuanganController::index` | GET | Semua Role | Daftar inventaris ruangan kelas & laboratorium |
-| `/ruangan/detail/{id}` | `RuanganController::detail` | GET | Semua Role | Rincian fasilitas yang ada di ruangan |
-| `/ruangan/tambah` | `RuanganController::tambah` | GET, POST | Admin, Petugas | Tambah ruangan baru |
-| `/ruangan/edit/{id}` | `RuanganController::edit` | GET, POST | Admin, Petugas | Ubah kapasitas, status, atau gedung ruangan |
-| `/ruangan/hapus/{id}` | `RuanganController::hapus` | GET (CSRF) | Admin | Hapus ruangan (dilindungi relasi fasilitas) |
-| `/fasilitas` | `FasilitasController::index` | GET | Semua Role | Pencarian, filter multi-dimensi & pagination aset |
-| `/fasilitas/detail/{id}` | `FasilitasController::detail` | GET | Semua Role | Spesifikasi fasilitas, histori servis, & tiket |
-| `/fasilitas/tambah` | `FasilitasController::tambah` | GET, POST | Admin, Petugas | Input inventaris baru + upload gambar aman |
-| `/fasilitas/edit/{id}` | `FasilitasController::edit` | GET, POST | Admin, Petugas | Perbarui spesifikasi atau foto inventaris |
-| `/fasilitas/hapus/{id}` | `FasilitasController::hapus` | GET (CSRF) | Admin | Hapus inventaris (dilindungi relasi laporan) |
-| `/fasilitas/updateKondisi/{id}`| `FasilitasController::updateKondisi`| POST | Admin, Petugas | Pembaruan cepat status kondisi fisik |
-| `/laporan` | `LaporanController::index` | GET | Semua Role | Daftar tiket pengaduan kerusakan |
-| `/laporan/detail/{id}` | `LaporanController::detail` | GET | Semua Role | Timeline histori tiket & rincian pelapor |
-| `/laporan/tambah` | `LaporanController::tambah` | GET, POST | Semua Role | Buat laporan kerusakan baru + upload bukti |
-| `/laporan/updateStatus/{id}` | `LaporanController::updateStatus` | POST | Admin, Petugas | Verifikasi status tiket (`diverifikasi`, dll.) |
-| `/laporan/hapus/{id}` | `LaporanController::hapus` | GET (CSRF) | Admin | Hapus tiket laporan pengujian/usang |
-| `/pemeliharaan` | `PemeliharaanController::index` | GET | Admin, Petugas | Daftar seluruh tindakan pemeliharaan |
-| `/pemeliharaan/detail/{id}` | `PemeliharaanController::detail` | GET | Semua Role | Lembar rincian tindakan servis (scoped) |
-| `/pemeliharaan/tambah` | `PemeliharaanController::tambah` | GET, POST | Admin, Petugas | Catat pemeliharaan & sinkronisasi status tiket |
-| `/pemeliharaan/edit/{id}` | `PemeliharaanController::edit` | GET, POST | Admin, Petugas | Koreksi catatan tindakan atau biaya perbaikan |
-| `/pemeliharaan/hapus/{id}` | `PemeliharaanController::hapus` | GET (CSRF) | Admin | Hapus catatan pemeliharaan |
-| `/report` | `ReportController::index` | GET | Admin, Petugas | Filter laporan dan rekapitulasi data |
-| `/report/print` | `ReportController::print` | GET | Admin, Petugas | Tampilan siap cetak (print preview) |
-| `/ai` | `AiController::index` | GET | Admin, Petugas | Audit trail inferensi log AI |
-| `/ai/analysis` | `AiController::analysis` | GET | Admin, Petugas | Analisis anomali frekuensi kerusakan aset |
-| `/ai/recommendations` | `AiController::recommendations` | GET | Admin, Petugas | Rekomendasi prioritas servis preventif |
-| `/ai-assistant` | `AiAssistantController::index` | GET | Admin, Petugas | Interface konsultasi asisten virtual sarpras |
-| `/ai-assistant/ask` | `AiAssistantController::ask` | POST (AJAX)| Admin, Petugas | Endpoint API inferensi jawaban bahasa natural |
-| `/users` | `UserController::index` | GET | Admin | Daftar seluruh pengguna civitas sistem |
+| URL Route                       | Controller & Method                  | Metode HTTP | Hak Akses (Role) | Keterangan                                        |
+| ------------------------------- | ------------------------------------ | ----------- | ---------------- | ------------------------------------------------- |
+| `/` atau `/home`                | `HomeController::index`              | GET         | Publik           | Landing page sistem & statistik ringkas           |
+| `/auth/login`                   | `AuthController::login`              | GET, POST   | Publik           | Form login & proses verifikasi kredensial         |
+| `/auth/logout`                  | `AuthController::logout`             | GET, POST   | Terautentikasi   | Mengakhiri sesi dan regenerasi session ID         |
+| `/dashboard`                    | `DashboardController::index`         | GET         | Semua Role       | Dashboard analitik sesuai peran pengguna          |
+| `/gedung`                       | `GedungController::index`            | GET         | Semua Role       | Daftar seluruh gedung kampus                      |
+| `/gedung/detail/{id}`           | `GedungController::detail`           | GET         | Semua Role       | Rincian gedung & ruangan di dalamnya              |
+| `/gedung/tambah`                | `GedungController::tambah`           | GET, POST   | Admin            | Tambah master data gedung baru                    |
+| `/gedung/edit/{id}`             | `GedungController::edit`             | GET, POST   | Admin            | Edit informasi gedung                             |
+| `/gedung/hapus/{id}`            | `GedungController::hapus`            | GET (CSRF)  | Admin            | Hapus gedung (dilindungi relasi ruangan)          |
+| `/ruangan`                      | `RuanganController::index`           | GET         | Semua Role       | Daftar inventaris ruangan kelas & laboratorium    |
+| `/ruangan/detail/{id}`          | `RuanganController::detail`          | GET         | Semua Role       | Rincian fasilitas yang ada di ruangan             |
+| `/ruangan/tambah`               | `RuanganController::tambah`          | GET, POST   | Admin, Petugas   | Tambah ruangan baru                               |
+| `/ruangan/edit/{id}`            | `RuanganController::edit`            | GET, POST   | Admin, Petugas   | Ubah kapasitas, status, atau gedung ruangan       |
+| `/ruangan/hapus/{id}`           | `RuanganController::hapus`           | GET (CSRF)  | Admin            | Hapus ruangan (dilindungi relasi fasilitas)       |
+| `/fasilitas`                    | `FasilitasController::index`         | GET         | Semua Role       | Pencarian, filter multi-dimensi & pagination aset |
+| `/fasilitas/detail/{id}`        | `FasilitasController::detail`        | GET         | Semua Role       | Spesifikasi fasilitas, histori servis, & tiket    |
+| `/fasilitas/tambah`             | `FasilitasController::tambah`        | GET, POST   | Admin, Petugas   | Input inventaris baru + upload gambar aman        |
+| `/fasilitas/edit/{id}`          | `FasilitasController::edit`          | GET, POST   | Admin, Petugas   | Perbarui spesifikasi atau foto inventaris         |
+| `/fasilitas/hapus/{id}`         | `FasilitasController::hapus`         | GET (CSRF)  | Admin            | Hapus inventaris (dilindungi relasi laporan)      |
+| `/fasilitas/updateKondisi/{id}` | `FasilitasController::updateKondisi` | POST        | Admin, Petugas   | Pembaruan cepat status kondisi fisik              |
+| `/laporan`                      | `LaporanController::index`           | GET         | Semua Role       | Daftar tiket pengaduan kerusakan                  |
+| `/laporan/detail/{id}`          | `LaporanController::detail`          | GET         | Semua Role       | Timeline histori tiket & rincian pelapor          |
+| `/laporan/tambah`               | `LaporanController::tambah`          | GET, POST   | Semua Role       | Buat laporan kerusakan baru + upload bukti        |
+| `/laporan/updateStatus/{id}`    | `LaporanController::updateStatus`    | POST        | Admin, Petugas   | Verifikasi status tiket (`diverifikasi`, dll.)    |
+| `/laporan/hapus/{id}`           | `LaporanController::hapus`           | GET (CSRF)  | Admin            | Hapus tiket laporan pengujian/usang               |
+| `/pemeliharaan`                 | `PemeliharaanController::index`      | GET         | Admin, Petugas   | Daftar seluruh tindakan pemeliharaan              |
+| `/pemeliharaan/detail/{id}`     | `PemeliharaanController::detail`     | GET         | Semua Role       | Lembar rincian tindakan servis (scoped)           |
+| `/pemeliharaan/tambah`          | `PemeliharaanController::tambah`     | GET, POST   | Admin, Petugas   | Catat pemeliharaan & sinkronisasi status tiket    |
+| `/pemeliharaan/edit/{id}`       | `PemeliharaanController::edit`       | GET, POST   | Admin, Petugas   | Koreksi catatan tindakan atau biaya perbaikan     |
+| `/pemeliharaan/hapus/{id}`      | `PemeliharaanController::hapus`      | GET (CSRF)  | Admin            | Hapus catatan pemeliharaan                        |
+| `/report`                       | `ReportController::index`            | GET         | Admin, Petugas   | Filter laporan dan rekapitulasi data              |
+| `/report/print`                 | `ReportController::print`            | GET         | Admin, Petugas   | Tampilan siap cetak (print preview)               |
+| `/ai`                           | `AiController::index`                | GET         | Admin, Petugas   | Audit trail inferensi log AI                      |
+| `/ai/analysis`                  | `AiController::analysis`             | GET         | Admin, Petugas   | Analisis anomali frekuensi kerusakan aset         |
+| `/ai/recommendations`           | `AiController::recommendations`      | GET         | Admin, Petugas   | Rekomendasi prioritas servis preventif            |
+| `/ai-assistant`                 | `AiAssistantController::index`       | GET         | Admin, Petugas   | Interface konsultasi asisten virtual sarpras      |
+| `/ai-assistant/ask`             | `AiAssistantController::ask`         | POST (AJAX) | Admin, Petugas   | Endpoint API inferensi jawaban bahasa natural     |
+| `/users`                        | `UserController::index`              | GET         | Admin            | Daftar seluruh pengguna civitas sistem            |
 
 ---
 
 ## 🛡️ Matriks Role & Hak Akses (RBAC)
 
-| Modul / Tindakan | Administrator | Petugas Sarpras | Dosen (Pengguna) | Mahasiswa (Pengguna) |
-|---|:---:|:---:|:---:|:---:|
-| **Login & Dashboard Role** | ✅ (Admin Dashboard) | ✅ (Petugas Dashboard) | ✅ (Civitas Dashboard) | ✅ (Civitas Dashboard) |
-| **Manajemen User (`/users`)** | ✅ Full Akses | ❌ 403 Forbidden | ❌ 403 Forbidden | ❌ 403 Forbidden |
-| **Master Gedung: Tambah / Edit / Hapus** | ✅ Full Akses | ❌ Read Only | ❌ Read Only | ❌ Read Only |
-| **Master Ruangan: Tambah / Edit** | ✅ Full Akses | ✅ Diizinkan | ❌ Read Only | ❌ Read Only |
-| **Master Ruangan: Hapus** | ✅ Full Akses | ❌ Khusus Admin | ❌ Read Only | ❌ Read Only |
-| **Fasilitas: Tambah / Edit / Update Kondisi**| ✅ Full Akses | ✅ Diizinkan | ❌ Read Only | ❌ Read Only |
-| **Fasilitas: Hapus** | ✅ Full Akses | ❌ Khusus Admin | ❌ Read Only | ❌ Read Only |
-| **Pelaporan Kerusakan: Buat Laporan** | ✅ Diizinkan | ✅ Diizinkan | ✅ Diizinkan | ✅ Diizinkan |
-| **Pelaporan Kerusakan: Verifikasi Status**| ✅ Diizinkan | ✅ Diizinkan | ❌ Read Only | ❌ Read Only |
-| **Pelaporan Kerusakan: Data Scoping** | Melihat Semua | Melihat Semua | Hanya Milik Sendiri | Hanya Milik Sendiri |
-| **Pemeliharaan: Tambah / Edit** | ✅ Full Akses | ✅ Diizinkan | ❌ 403 Forbidden | ❌ 403 Forbidden |
-| **Pemeliharaan: Hapus** | ✅ Full Akses | ❌ Khusus Admin | ❌ 403 Forbidden | ❌ 403 Forbidden |
-| **Export & Cetak Laporan (`/report`)** | ✅ Full Akses | ✅ Diizinkan | ❌ 403 Forbidden | ❌ 403 Forbidden |
-| **AI Assistant & Rekomendasi (`/ai`)** | ✅ Full Akses | ✅ Diizinkan | ❌ 403 Forbidden | ❌ 403 Forbidden |
+| Modul / Tindakan                              |    Administrator     |    Petugas Sarpras     |    Dosen (Pengguna)    |  Mahasiswa (Pengguna)  |
+| --------------------------------------------- | :------------------: | :--------------------: | :--------------------: | :--------------------: |
+| **Login & Dashboard Role**                    | ✅ (Admin Dashboard) | ✅ (Petugas Dashboard) | ✅ (Civitas Dashboard) | ✅ (Civitas Dashboard) |
+| **Manajemen User (`/users`)**                 |    ✅ Full Akses     |    ❌ 403 Forbidden    |    ❌ 403 Forbidden    |    ❌ 403 Forbidden    |
+| **Master Gedung: Tambah / Edit / Hapus**      |    ✅ Full Akses     |      ❌ Read Only      |      ❌ Read Only      |      ❌ Read Only      |
+| **Master Ruangan: Tambah / Edit**             |    ✅ Full Akses     |      ✅ Diizinkan      |      ❌ Read Only      |      ❌ Read Only      |
+| **Master Ruangan: Hapus**                     |    ✅ Full Akses     |    ❌ Khusus Admin     |      ❌ Read Only      |      ❌ Read Only      |
+| **Fasilitas: Tambah / Edit / Update Kondisi** |    ✅ Full Akses     |      ✅ Diizinkan      |      ❌ Read Only      |      ❌ Read Only      |
+| **Fasilitas: Hapus**                          |    ✅ Full Akses     |    ❌ Khusus Admin     |      ❌ Read Only      |      ❌ Read Only      |
+| **Pelaporan Kerusakan: Buat Laporan**         |     ✅ Diizinkan     |      ✅ Diizinkan      |      ✅ Diizinkan      |      ✅ Diizinkan      |
+| **Pelaporan Kerusakan: Verifikasi Status**    |     ✅ Diizinkan     |      ✅ Diizinkan      |      ❌ Read Only      |      ❌ Read Only      |
+| **Pelaporan Kerusakan: Data Scoping**         |    Melihat Semua     |     Melihat Semua      |  Hanya Milik Sendiri   |  Hanya Milik Sendiri   |
+| **Pemeliharaan: Tambah / Edit**               |    ✅ Full Akses     |      ✅ Diizinkan      |    ❌ 403 Forbidden    |    ❌ 403 Forbidden    |
+| **Pemeliharaan: Hapus**                       |    ✅ Full Akses     |    ❌ Khusus Admin     |    ❌ 403 Forbidden    |    ❌ 403 Forbidden    |
+| **Export & Cetak Laporan (`/report`)**        |    ✅ Full Akses     |      ✅ Diizinkan      |    ❌ 403 Forbidden    |    ❌ 403 Forbidden    |
+| **AI Assistant & Rekomendasi (`/ai`)**        |    ✅ Full Akses     |      ✅ Diizinkan      |    ❌ 403 Forbidden    |    ❌ 403 Forbidden    |
 
 ---
 
 ## 🔒 Hardening Keamanan Sistem
 
 Sesuai hasil audit final pada tahap Prompt 11, sistem telah dilengkapi perlindungan keamanan:
+
 1. **CSRF (Cross-Site Request Forgery)**:
    - Dilindungi helper `csrf_token()`, `csrf_field()`, dan `csrf_validate()`.
    - Seluruh form POST dan aksi link konfirmasi penghapusan divalidasi token CSRF berbasis sesi menggunakan `hash_equals()`.
@@ -234,12 +250,12 @@ Sesuai hasil audit final pada tahap Prompt 11, sistem telah dilengkapi perlindun
 
 Semua kata sandi di-hash menggunakan algoritma standar aman PHP `password_hash(..., PASSWORD_BCRYPT)`. Pengguna juga dapat memanfaatkan tombol **Quick Fill** 1-klik pada halaman login:
 
-| Peran (Role) | Nomor Induk | Nama Lengkap | Email Akun | Kata Sandi Awal |
-|---|---|---|---|---|
-| **Administrator** | `ADM-001` | Rizky Ramadhan | `admin@ikmi.ac.id` | `Admin!IKMI2026` |
-| **Petugas Sarpras** | `PET-001` | Budi Santoso | `petugas@ikmi.ac.id` | `Petugas!IKMI2026` |
-| **Dosen (Pengguna)** | `0412088501` | Dr. Dadang Sudrajat, M.Kom. | `dosen@ikmi.ac.id` | `Dadang!IKMI2026` |
-| **Mahasiswa (Pengguna)** | `4122001` | Ahmad Fauzi | `mahasiswa@ikmi.ac.id` | `Ahmad!IKMI2026` |
+| Peran (Role)             | Nomor Induk  | Nama Lengkap                | Email Akun             | Kata Sandi Awal    |
+| ------------------------ | ------------ | --------------------------- | ---------------------- | ------------------ |
+| **Administrator**        | `ADM-001`    | Rizky Ramadhan              | `admin@ikmi.ac.id`     | `Admin!IKMI2026`   |
+| **Petugas Sarpras**      | `PET-001`    | Budi Santoso                | `petugas@ikmi.ac.id`   | `Petugas!IKMI2026` |
+| **Dosen (Pengguna)**     | `0412088501` | Dr. Dadang Sudrajat, M.Kom. | `dosen@ikmi.ac.id`     | `Dadang!IKMI2026`  |
+| **Mahasiswa (Pengguna)** | `4122001`    | Ahmad Fauzi                 | `mahasiswa@ikmi.ac.id` | `Ahmad!IKMI2026`   |
 
 ---
 
@@ -291,11 +307,13 @@ Pengujian komprehensif telah dijalankan secara otomatis melalui PHP CLI environm
 ## ⚡ Panduan Instalasi & Menjalankan di Laragon
 
 ### 1. Prasyarat Sistem
+
 - **Web Server**: Apache 2.4+ (Bawaan Laragon).
 - **PHP**: Versi 8.1 / 8.2 / 8.3 dengan ekstensi aktif: `pdo_mysql`, `fileinfo`, `gd`, `openssl`, `mbstring`.
 - **Database**: MySQL 8.0+ / MariaDB 10.4+.
 
 ### 2. Langkah Pemasangan
+
 1. **Pastikan Folder Berada di Laragon**:
    Folder proyek ditempatkan pada direktori root Laragon:
    ```text
