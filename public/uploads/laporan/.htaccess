@@ -1,0 +1,6 @@
+# Prevent Execution of Scripts in Laporan Uploads Directory
+<FilesMatch "\.(php|php3|php4|php5|php7|php8|phtml|phps|pl|py|jsp|asp|htm|html|shtml|sh|cgi|phar|exe)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+Options -ExecCGI -Indexes

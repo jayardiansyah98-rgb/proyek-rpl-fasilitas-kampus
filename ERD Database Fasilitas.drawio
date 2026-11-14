@@ -1,0 +1,182 @@
+<mxfile host="app.diagrams.net" modified="2026-11-12T19:55:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+  <diagram id="erd-fasilitas" name="ERD Database Fasilitas Kampus">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title_erd" value="Entity Relationship Diagram (ERD) - Sistem Informasi Fasilitas Kampus" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="600" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 1. ROLES -->
+        <mxCell id="tbl_roles" value="roles&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;     nama_role : varchar(50)&#xa;     deskripsi : varchar(255)&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f1f5f9;strokeColor=#475569;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="180" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- 2. USERS -->
+        <mxCell id="tbl_users" value="users&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;FK | role_id : int(11) unsigned&#xa;     nomor_induk : varchar(50)&#xa;     nama_lengkap : varchar(100)&#xa;     email : varchar(100)&#xa;     password : varchar(255)&#xa;     telepon : varchar(20)&#xa;     jenis_pengguna : enum&#xa;     status : enum&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="240" width="200" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- 3. NOTIFIKASI -->
+        <mxCell id="tbl_notifikasi" value="notifikasi&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;FK | user_id : int(11) unsigned&#xa;     judul : varchar(150)&#xa;     pesan : text&#xa;     tipe : enum&#xa;     tautan : varchar(255)&#xa;     is_read : tinyint(1)&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="500" width="200" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- 4. AI_LOGS -->
+        <mxCell id="tbl_ai_logs" value="ai_logs&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;FK | user_id : int(11) unsigned&#xa;     question : text&#xa;     response : text&#xa;     fitur : varchar(100)&#xa;     status : enum&#xa;     waktu_eksekusi_ms : int&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#faf5ff;strokeColor=#9333ea;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="710" width="200" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- 5. GEDUNG -->
+        <mxCell id="tbl_gedung" value="gedung&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;     kode_gedung : varchar(20)&#xa;     nama_gedung : varchar(100)&#xa;     lokasi : varchar(255)&#xa;     jumlah_lantai : tinyint&#xa;     status : enum&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="380" y="70" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- 6. RUANGAN -->
+        <mxCell id="tbl_ruangan" value="ruangan&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;FK | gedung_id : int(11) unsigned&#xa;     kode_ruangan : varchar(30)&#xa;     nama_ruangan : varchar(100)&#xa;     lantai : tinyint&#xa;     jenis_ruangan : enum&#xa;     kapasitas : smallint&#xa;     status : enum&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="380" y="270" width="200" height="185" as="geometry" />
+        </mxCell>
+
+        <!-- 7. KATEGORI_FASILITAS -->
+        <mxCell id="tbl_kategori" value="kategori_fasilitas&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;     kode_kategori : varchar(30)&#xa;     nama_kategori : varchar(100)&#xa;     deskripsi : text&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#fefce8;strokeColor=#ca8a04;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="380" y="520" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- 8. FASILITAS -->
+        <mxCell id="tbl_fasilitas" value="fasilitas&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;FK | kategori_id : int(11) unsigned&#xa;FK | ruangan_id : int(11) unsigned&#xa;     kode_inventaris : varchar(50)&#xa;     nama : varchar(150)&#xa;     jumlah : int unsigned&#xa;     kondisi : enum&#xa;     tahun_pengadaan : year&#xa;     foto : varchar(255)&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#fefce8;strokeColor=#eab308;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="270" width="210" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- 9. LAPORAN_KERUSAKAN -->
+        <mxCell id="tbl_laporan" value="laporan_kerusakan&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;FK | user_id : int(11) unsigned&#xa;FK | fasilitas_id : int(11) unsigned&#xa;FK | ruangan_id : int(11) unsigned&#xa;     kode_laporan : varchar(50)&#xa;     deskripsi : text&#xa;     foto : varchar(255)&#xa;     prioritas : enum&#xa;     status : enum&#xa;     catatan_petugas : text&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#fef2f2;strokeColor=#ef4444;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="550" width="210" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- 10. PEMELIHARAAN -->
+        <mxCell id="tbl_pemeliharaan" value="pemeliharaan&#xa;-----------------------------------------&#xa;PK | id : int(11) unsigned&#xa;-----------------------------------------&#xa;FK | fasilitas_id : int(11) unsigned&#xa;FK | laporan_id : int(11) unsigned&#xa;FK | petugas_id : int(11) unsigned&#xa;     kode_pemeliharaan : varchar(50)&#xa;     tanggal_mulai : date&#xa;     tanggal_selesai : date&#xa;     jenis_tindakan : varchar(50)&#xa;     biaya : decimal(12,2)&#xa;     status : enum&#xa;     created_at : timestamp" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#faf5ff;strokeColor=#a855f7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="960" y="450" width="210" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- ERD RELATIONSHIPS -->
+
+        <!-- roles 1:N users -->
+        <mxCell id="fk_users_role" edge="1" parent="1" source="tbl_roles" target="tbl_users" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_fk_users_role" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_users_role">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- users 1:N notifikasi -->
+        <mxCell id="fk_notif_user" edge="1" parent="1" source="tbl_users" target="tbl_notifikasi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#22c55e;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_fk_notif_user" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_notif_user">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- users 1:N ai_logs -->
+        <mxCell id="fk_ai_user" edge="1" parent="1" source="tbl_users" target="tbl_ai_logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9333ea;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="30" y="340" />
+              <mxPoint x="30" y="795" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_fk_ai_user" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_ai_user">
+          <mxGeometry relative="1" x="0.8" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- gedung 1:N ruangan -->
+        <mxCell id="fk_ruangan_gedung" edge="1" parent="1" source="tbl_gedung" target="tbl_ruangan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_fk_ruangan_gedung" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_ruangan_gedung">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- ruangan 1:N fasilitas -->
+        <mxCell id="fk_fasilitas_ruangan" edge="1" parent="1" source="tbl_ruangan" target="tbl_fasilitas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_fk_fasilitas_ruangan" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_fasilitas_ruangan">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- kategori 1:N fasilitas -->
+        <mxCell id="fk_fasilitas_kategori" edge="1" parent="1" source="tbl_kategori" target="tbl_fasilitas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748b;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="580" />
+              <mxPoint x="630" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_fk_fasilitas_kategori" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_fasilitas_kategori">
+          <mxGeometry relative="1" x="0.6" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- users 1:N laporan_kerusakan -->
+        <mxCell id="fk_laporan_user" edge="1" parent="1" source="tbl_users" target="tbl_laporan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#ef4444;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="380" />
+              <mxPoint x="300" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_fk_laporan_user" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_laporan_user">
+          <mxGeometry relative="1" x="0.8" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- fasilitas 1:N laporan_kerusakan -->
+        <mxCell id="fk_laporan_fasilitas" edge="1" parent="1" source="tbl_fasilitas" target="tbl_laporan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#ef4444;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_fk_laporan_fasilitas" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_laporan_fasilitas">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- fasilitas 1:N pemeliharaan -->
+        <mxCell id="fk_pemeliharaan_fasilitas" edge="1" parent="1" source="tbl_fasilitas" target="tbl_pemeliharaan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#a855f7;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_fk_pemeliharaan_fasilitas" value="1 : N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_pemeliharaan_fasilitas">
+          <mxGeometry relative="1" x="0.6" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- laporan_kerusakan 1:1 pemeliharaan -->
+        <mxCell id="fk_pemeliharaan_laporan" edge="1" parent="1" source="tbl_laporan" target="tbl_pemeliharaan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#a855f7;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_fk_pemeliharaan_laporan" value="1 : 1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_pemeliharaan_laporan">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- users (petugas) 1:N pemeliharaan -->
+        <mxCell id="fk_pemeliharaan_petugas" edge="1" parent="1" source="tbl_users" target="tbl_pemeliharaan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#3b82f6;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="250" />
+              <mxPoint x="320" y="20" />
+              <mxPoint x="1100" y="20" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_fk_pemeliharaan_petugas" value="1 : N (Petugas)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="fk_pemeliharaan_petugas">
+          <mxGeometry relative="1" x="0.9" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

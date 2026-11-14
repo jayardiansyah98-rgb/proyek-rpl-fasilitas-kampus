@@ -1,0 +1,268 @@
+/**
+ * Custom CSS
+ * Sistem Informasi Fasilitas STMIK IKMI Cirebon
+ */
+
+:root {
+    --bs-primary: #0d47a1;
+    --bs-primary-rgb: 13, 71, 161;
+    --bs-primary-hover: #083072;
+    --bs-warning: #ffb300;
+    --bs-font-sans-serif: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    font-family: var(--bs-font-sans-serif);
+    color: #2b3445;
+    background-color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+}
+
+.fw-extrabold {
+    font-weight: 800;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #002171 100%);
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 179, 0, 0.15), transparent 60%);
+    pointer-events: none;
+}
+
+/* Brand Icon */
+.brand-icon {
+    width: 38px;
+    height: 38px;
+}
+
+/* Feature & Action Cards */
+.feature-icon {
+    width: 56px;
+    height: 56px;
+}
+
+.hover-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(13, 71, 161, 0.08) !important;
+}
+
+.text-purple {
+    color: #6f42c1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* ==========================================================================
+   Chatbot Floating Button & Popup Styles (Halaman Beranda STMIK IKMI Cirebon)
+   Tombol floating lingkaran fixed pojok kanan bawah (20px), popup 400x560px
+   ========================================================================== */
+.chatbot-float-btn {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%) !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 8px 24px rgba(13, 71, 161, 0.35) !important;
+    cursor: pointer !important;
+    z-index: 1070 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+    outline: none !important;
+    padding: 0 !important;
+}
+
+.chatbot-float-btn:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 12px 30px rgba(13, 71, 161, 0.45) !important;
+}
+
+.chatbot-float-btn:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+.chatbot-float-btn.d-none {
+    display: none !important;
+}
+
+.chatbot-float-badge {
+    position: absolute !important;
+    top: 2px !important;
+    right: 2px !important;
+    width: 14px !important;
+    height: 14px !important;
+    background-color: #22c55e !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 50% !important;
+}
+
+#chatbot-panel,
+.chatbot-panel {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 400px !important;
+    max-width: calc(100vw - 40px) !important;
+    height: 560px !important;
+    max-height: calc(100vh - 40px) !important;
+    z-index: 1080 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+    box-shadow: 0 16px 48px -4px rgba(13, 71, 161, 0.35), 0 0 0 1px rgba(13, 71, 161, 0.12) !important;
+    border: none !important;
+    font-family: var(--bs-font-sans-serif, system-ui, -apple-system, sans-serif) !important;
+}
+
+#chatbot-panel.d-none,
+.chatbot-panel.d-none {
+    display: none !important;
+}
+
+@keyframes slideUpPopup {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUpPopup 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+/* Chatbot Header */
+.chatbot-header {
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%) !important;
+    border-bottom: 2px solid #ffc107 !important;
+    flex-shrink: 0 !important;
+}
+
+.chatbot-avatar {
+    width: 36px;
+    height: 36px;
+}
+
+.badge-status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+}
+
+/* Chat Messages Scroll Area Mandiri */
+.chatbot-messages {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    background-color: #f8fafc !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scroll-behavior: smooth !important;
+}
+
+.avatar-sm {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+}
+
+.message-content {
+    word-break: break-word;
+}
+
+.bot-message .message-content {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+.user-message .message-content {
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%) !important;
+    color: #ffffff !important;
+}
+
+/* Quick Prompt Buttons */
+.quick-prompts-wrapper {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+.quick-prompt-btn {
+    font-size: 0.8rem !important;
+    border-color: #cbd5e1 !important;
+    color: #1e293b !important;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.quick-prompt-btn:hover {
+    background-color: #eff6ff !important;
+    border-color: #0d47a1 !important;
+    color: #0d47a1 !important;
+    transform: translateX(3px);
+}
+
+/* Chat Footer & Input */
+.chatbot-footer {
+    flex-shrink: 0 !important;
+    background: #ffffff !important;
+    border-top: 1px solid #e2e8f0 !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+    .chatbot-float-btn {
+        bottom: 16px !important;
+        right: 16px !important;
+        width: 54px !important;
+        height: 54px !important;
+    }
+    #chatbot-panel,
+    .chatbot-panel {
+        bottom: 12px !important;
+        right: 12px !important;
+        left: 12px !important;
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+        height: calc(100vh - 24px) !important;
+        max-height: 560px !important;
+        border-radius: 16px !important;
+    }
+}
+

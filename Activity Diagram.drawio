@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" modified="2026-11-12T19:35:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+  <diagram id="activity-chatbot-ai" name="Activity Diagram Chatbot AI">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- POOL / CONTAINER -->
+        <mxCell id="pool_ai" value="Activity Diagram: Konsultasi Fasilitas via Chatbot AI" style="swimlane;html=1;childLayout=stackLayout;startSize=30;horizontal=1;containerType=tree;fontSize=14;fontStyle=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="760" height="660" as="geometry" />
+        </mxCell>
+
+        <!-- SWIMLANE 1: PENGGUNA -->
+        <mxCell id="lane_ai_user" value="Pengguna (Mahasiswa / Dosen)" style="swimlane;html=1;startSize=25;fontSize=12;fontStyle=1;fillColor=#eff6ff;strokeColor=#93c5fd;" vertex="1" parent="pool_ai">
+          <mxGeometry x="0" y="30" width="240" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="start_ai" value="" style="ellipse;fillColor=#1e293b;strokeColor=none;" vertex="1" parent="lane_ai_user">
+          <mxGeometry x="105" y="40" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="act_buka_chat" value="Klik Widget Chatbot AI&#xa;di Pojok Layar" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_user">
+          <mxGeometry x="50" y="100" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_ketik_tanya" value="Ketik Pertanyaan&#xa;(Lokasi, Kondisi / Jadwal)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_user">
+          <mxGeometry x="50" y="175" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_kirim_chat" value="Klik Tombol Kirim / Enter" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_user">
+          <mxGeometry x="50" y="250" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act_baca_jawaban" value="Menerima &amp; Membaca&#xa;Respon Rekomendasi AI" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_user">
+          <mxGeometry x="50" y="520" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="end_ai_user" value="" style="ellipse;html=1;shape=endState;fillColor=#1e293b;strokeColor=#94a3b8;" vertex="1" parent="lane_ai_user">
+          <mxGeometry x="105" y="585" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- SWIMLANE 2: SISTEM WEB MVC -->
+        <mxCell id="lane_ai_sys" value="Sistem Web Fasilitas (Backend)" style="swimlane;html=1;startSize=25;fontSize=12;fontStyle=1;fillColor=#f8fafc;strokeColor=#cbd5e1;" vertex="1" parent="pool_ai">
+          <mxGeometry x="240" y="30" width="260" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="act_query_db" value="Ambil Data Aktual Kampus&#xa;(Database Fasilitas &amp; Ruangan)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_sys">
+          <mxGeometry x="50" y="245" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act_build_context" value="Bangun Context Real-Time &amp;&#xa;Format Pesan Prompt" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_sys">
+          <mxGeometry x="50" y="325" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_render_ui" value="Format &amp; Tampilkan Balasan&#xa;ke Chat Bubble Pengguna" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_sys">
+          <mxGeometry x="50" y="520" width="160" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- SWIMLANE 3: AI ASSISTANT -->
+        <mxCell id="lane_ai_engine" value="AI Assistant Service" style="swimlane;html=1;startSize=25;fontSize=12;fontStyle=1;fillColor=#faf5ff;strokeColor=#d8b4fe;" vertex="1" parent="pool_ai">
+          <mxGeometry x="500" y="30" width="260" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="act_nlp_process" value="Analisis Pertanyaan&#xa;(Natural Language Processing)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_ai_engine">
+          <mxGeometry x="50" y="325" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_generate_ans" value="Generate Jawaban Cerdas &amp;&#xa;Rekomendasi Pemeliharaan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#f3e8ff;strokeColor=#a855f7;fontSize=11;" vertex="1" parent="lane_ai_engine">
+          <mxGeometry x="50" y="420" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTORS / EDGES -->
+        <mxCell id="c1" edge="1" parent="pool_ai" source="start_ai" target="act_buka_chat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" edge="1" parent="pool_ai" source="act_buka_chat" target="act_ketik_tanya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" edge="1" parent="pool_ai" source="act_ketik_tanya" target="act_kirim_chat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" edge="1" parent="pool_ai" source="act_kirim_chat" target="act_query_db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" edge="1" parent="pool_ai" source="act_query_db" target="act_build_context" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" edge="1" parent="pool_ai" source="act_build_context" target="act_nlp_process" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" edge="1" parent="pool_ai" source="act_nlp_process" target="act_generate_ans" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" edge="1" parent="pool_ai" source="act_generate_ans" target="act_render_ui" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#a855f7;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" edge="1" parent="pool_ai" source="act_render_ui" target="act_baca_jawaban" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" edge="1" parent="pool_ai" source="act_baca_jawaban" target="end_ai_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

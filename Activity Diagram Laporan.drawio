@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net" modified="2026-11-12T19:30:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+  <diagram id="activity-pelaporan-fasilitas" name="Activity Diagram Pelaporan Fasilitas">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- POOL / CONTAINER -->
+        <mxCell id="pool" value="Activity Diagram: Pelaporan Kerusakan Fasilitas Kampus" style="swimlane;html=1;childLayout=stackLayout;startSize=30;horizontal=1;containerType=tree;fontSize=14;fontStyle=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="760" height="740" as="geometry" />
+        </mxCell>
+
+        <!-- SWIMLANE 1: MAHASISWA / DOSEN -->
+        <mxCell id="lane_user" value="Pengguna (Mahasiswa / Dosen)" style="swimlane;html=1;startSize=25;fontSize=12;fontStyle=1;fillColor=#eff6ff;strokeColor=#93c5fd;" vertex="1" parent="pool">
+          <mxGeometry x="0" y="30" width="240" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="start_node" value="" style="ellipse;fillColor=#1e293b;strokeColor=none;" vertex="1" parent="lane_user">
+          <mxGeometry x="105" y="40" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="act_pilih_menu" value="Pilih Menu&#xa;Lapor Kerusakan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_user">
+          <mxGeometry x="50" y="100" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_isi_form" value="Pilih Ruangan, Fasilitas&#xa;&amp; Tingkat Prioritas" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_user">
+          <mxGeometry x="50" y="175" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_upload_foto" value="Unggah Foto Bukti&#xa;Kerusakan Fisik" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_user">
+          <mxGeometry x="50" y="250" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_klik_kirim" value="Klik Tombol&#xa;'Kirim Laporan'" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_user">
+          <mxGeometry x="50" y="325" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_terima_tiket" value="Menerima Tiket &amp;&#xa;Kode Laporan (LAP-xxx)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_user">
+          <mxGeometry x="50" y="600" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="end_node" value="" style="ellipse;html=1;shape=endState;fillColor=#1e293b;strokeColor=#94a3b8;" vertex="1" parent="lane_user">
+          <mxGeometry x="105" y="670" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- SWIMLANE 2: SISTEM WEB -->
+        <mxCell id="lane_system" value="Sistem Informasi Fasilitas" style="swimlane;html=1;startSize=25;fontSize=12;fontStyle=1;fillColor=#f8fafc;strokeColor=#cbd5e1;" vertex="1" parent="pool">
+          <mxGeometry x="240" y="30" width="280" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_validasi" value="Data &amp; Foto&#xa;Valid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fef08a;strokeColor=#ca8a04;fontSize=11;" vertex="1" parent="lane_system">
+          <mxGeometry x="80" y="320" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="act_pesan_error" value="Tampilkan Pesan Error&#xa;(Lengkapi Form / Foto)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#fee2e2;strokeColor=#ef4444;fontSize=11;" vertex="1" parent="lane_system">
+          <mxGeometry x="65" y="230" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_simpan_db" value="Generate Kode Laporan &amp;&#xa;Simpan Data ke Database" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_system">
+          <mxGeometry x="60" y="410" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_format_wa" value="Format Pesan Alert &amp;&#xa;Siapkan Payload WhatsApp" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_system">
+          <mxGeometry x="60" y="480" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_kirim_wa" value="Kirim Notifikasi via&#xa;Fonnte WhatsApp API" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#dcfce7;strokeColor=#22c55e;fontSize=11;" vertex="1" parent="lane_system">
+          <mxGeometry x="60" y="550" width="160" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- SWIMLANE 3: PETUGAS SARPRAS -->
+        <mxCell id="lane_sarpras" value="Petugas Sarpras (WhatsApp)" style="swimlane;html=1;startSize=25;fontSize=12;fontStyle=1;fillColor=#f0fdf4;strokeColor=#86efac;" vertex="1" parent="pool">
+          <mxGeometry x="520" y="30" width="240" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="act_terima_wa" value="Menerima Pesan WA&#xa;Alert Kerusakan Fasilitas" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_sarpras">
+          <mxGeometry x="45" y="550" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="act_cek_web" value="Buka Link Laporan &amp;&#xa;Persiapkan Pengecekan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="lane_sarpras">
+          <mxGeometry x="45" y="625" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="end_node_sarpras" value="" style="ellipse;html=1;shape=endState;fillColor=#1e293b;strokeColor=#94a3b8;" vertex="1" parent="lane_sarpras">
+          <mxGeometry x="105" y="690" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTORS / EDGES -->
+        <mxCell id="e1" edge="1" parent="pool" source="start_node" target="act_pilih_menu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="pool" source="act_pilih_menu" target="act_isi_form" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="pool" source="act_isi_form" target="act_upload_foto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="pool" source="act_upload_foto" target="act_klik_kirim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="pool" source="act_klik_kirim" target="dec_validasi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6_invalid" edge="1" parent="pool" source="dec_validasi" target="act_pesan_error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;" value="[Tidak Valid]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6_back" edge="1" parent="pool" source="act_pesan_error" target="act_isi_form" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7_valid" edge="1" parent="pool" source="dec_validasi" target="act_simpan_db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22c55e;" value="[Valid]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="pool" source="act_simpan_db" target="act_format_wa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="pool" source="act_format_wa" target="act_kirim_wa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="pool" source="act_kirim_wa" target="act_terima_tiket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="pool" source="act_terima_tiket" target="end_node" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="pool" source="act_kirim_wa" target="act_terima_wa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22c55e;dashed=1;" value="[Kirim WA]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="pool" source="act_terima_wa" target="act_cek_web" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="pool" source="act_cek_web" target="end_node_sarpras" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

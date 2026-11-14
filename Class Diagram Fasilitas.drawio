@@ -1,0 +1,146 @@
+<mxfile host="app.diagrams.net" modified="2026-11-12T19:40:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+  <diagram id="class-diagram-fasilitas" name="Class Diagram Sistem Fasilitas">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 1. CLASS: USER -->
+        <mxCell id="cls_user" value="User&#xa;-----------------------------------------&#xa;- id: int&#xa;- role_id: int&#xa;- nomor_induk: string&#xa;- nama_lengkap: string&#xa;- email: string&#xa;- password: string&#xa;- telepon: string&#xa;- jenis_pengguna: enum&#xa;- status: enum&#xa;-----------------------------------------&#xa;+ authenticate(email, pass): bool&#xa;+ getAll(): array&#xa;+ getById(id): object&#xa;+ create(data): bool&#xa;+ update(id, data): bool" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="220" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- 2. CLASS: ROLE -->
+        <mxCell id="cls_role" value="Role&#xa;-----------------------------------------&#xa;- id: int&#xa;- nama_role: string&#xa;- deskripsi: string&#xa;-----------------------------------------&#xa;+ getAll(): array&#xa;+ getById(id): object" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="180" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- 3. CLASS: NOTIFIKASI -->
+        <mxCell id="cls_notif" value="Notification&#xa;-----------------------------------------&#xa;- id: int&#xa;- user_id: int&#xa;- judul: string&#xa;- pesan: text&#xa;- tipe: enum&#xa;- is_read: tinyint&#xa;- created_at: datetime&#xa;-----------------------------------------&#xa;+ sendWhatsApp(phone, msg): bool&#xa;+ create(data): bool&#xa;+ markAsRead(id): bool" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="520" width="220" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- 4. CLASS: GEDUNG -->
+        <mxCell id="cls_gedung" value="Gedung&#xa;-----------------------------------------&#xa;- id: int&#xa;- kode_gedung: string&#xa;- nama_gedung: string&#xa;- deskripsi: string&#xa;- status: enum&#xa;-----------------------------------------&#xa;+ getAll(): array&#xa;+ getById(id): object&#xa;+ insert(data): bool" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- 5. CLASS: RUANGAN -->
+        <mxCell id="cls_ruangan" value="Ruangan&#xa;-----------------------------------------&#xa;- id: int&#xa;- gedung_id: int&#xa;- kode_ruangan: string&#xa;- nama_ruangan: string&#xa;- lantai: int&#xa;- kapasitas: int&#xa;- status: enum&#xa;-----------------------------------------&#xa;+ getAll(): array&#xa;+ getByGedung(gedung_id): array&#xa;+ getById(id): object" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="270" width="210" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- 6. CLASS: KATEGORI FASILITAS -->
+        <mxCell id="cls_kategori" value="KategoriFasilitas&#xa;-----------------------------------------&#xa;- id: int&#xa;- nama_kategori: string&#xa;- deskripsi: text&#xa;-----------------------------------------&#xa;+ getAll(): array&#xa;+ getById(id): object" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="520" width="190" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- 7. CLASS: FASILITAS -->
+        <mxCell id="cls_fasilitas" value="Fasilitas&#xa;-----------------------------------------&#xa;- id: int&#xa;- ruangan_id: int&#xa;- kategori_id: int&#xa;- kode_inventaris: string&#xa;- nama_fasilitas: string&#xa;- kondisi: enum&#xa;- jumlah: int&#xa;- spesifikasi: text&#xa;- foto: string&#xa;-----------------------------------------&#xa;+ getAll(filters): array&#xa;+ getById(id): object&#xa;+ tambah(data): bool&#xa;+ updateKondisi(id, kondisi): bool" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#fefce8;strokeColor=#eab308;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="270" width="220" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- 8. CLASS: LAPORAN KERUSAKAN -->
+        <mxCell id="cls_laporan" value="LaporanKerusakan&#xa;-----------------------------------------&#xa;- id: int&#xa;- kode_laporan: string&#xa;- user_id: int&#xa;- ruangan_id: int&#xa;- fasilitas_id: int&#xa;- deskripsi: text&#xa;- foto: string&#xa;- prioritas: enum&#xa;- status: enum&#xa;- catatan_petugas: text&#xa;- tanggal_lapor: datetime&#xa;-----------------------------------------&#xa;+ create(data): bool&#xa;+ getAll(filters): array&#xa;+ getById(id): object&#xa;+ updateStatus(id, status): bool" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#fef2f2;strokeColor=#ef4444;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="550" width="220" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- 9. CLASS: PEMELIHARAAN -->
+        <mxCell id="cls_pemeliharaan" value="Pemeliharaan&#xa;-----------------------------------------&#xa;- id: int&#xa;- laporan_id: int&#xa;- user_petugas_id: int&#xa;- jenis_pemeliharaan: enum&#xa;- tanggal_jadwal: date&#xa;- tanggal_selesai: date&#xa;- status: enum&#xa;- keterangan: text&#xa;-----------------------------------------&#xa;+ jadwalkan(data): bool&#xa;+ selesaikan(id, data): bool&#xa;+ getRiwayat(): array" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#faf5ff;strokeColor=#a855f7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="550" width="220" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- 10. CLASS: AI ASSISTANT / LOG -->
+        <mxCell id="cls_ai" value="AiAssistant&#xa;-----------------------------------------&#xa;- id: int&#xa;- user_id: int&#xa;- prompt: text&#xa;- response: text&#xa;- context_data: text&#xa;- created_at: datetime&#xa;-----------------------------------------&#xa;+ askGemini(prompt, ctx): string&#xa;+ buildCampusContext(): string&#xa;+ logChat(data): bool" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#faf5ff;strokeColor=#9333ea;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="270" width="210" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- RELATIONSHIPS / EDGES -->
+
+        <!-- User to Role (Many to 1) -->
+        <mxCell id="rel_user_role" edge="1" parent="1" source="cls_user" target="cls_role" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_user_role" value="* .. 1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_user_role">
+          <mxGeometry relative="1" x="0.1" y="-1" as="geometry"><mxPoint x="-15" y="-15" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- User to Notifikasi (1 to Many) -->
+        <mxCell id="rel_user_notif" edge="1" parent="1" source="cls_user" target="cls_notif" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#22c55e;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_user_notif" value="1 .. *" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_user_notif">
+          <mxGeometry relative="1" x="0.3" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Gedung to Ruangan (1 to Many) -->
+        <mxCell id="rel_gedung_ruangan" edge="1" parent="1" source="cls_gedung" target="cls_ruangan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_gedung_ruangan" value="1 .. *" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_gedung_ruangan">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Ruangan to Fasilitas (1 to Many) -->
+        <mxCell id="rel_ruangan_fasilitas" edge="1" parent="1" source="cls_ruangan" target="cls_fasilitas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ruangan_fasilitas" value="1 .. *" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_ruangan_fasilitas">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Kategori to Fasilitas (1 to Many) -->
+        <mxCell id="rel_kategori_fasilitas" edge="1" parent="1" source="cls_kategori" target="cls_fasilitas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_kategori_fasilitas" value="1 .. *" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_kategori_fasilitas">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- User to Laporan (1 to Many) -->
+        <mxCell id="rel_user_laporan" edge="1" parent="1" source="cls_user" target="cls_laporan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#ef4444;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="160" />
+              <mxPoint x="340" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_user_laporan" value="1 .. *" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_user_laporan">
+          <mxGeometry relative="1" x="0.7" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Fasilitas to Laporan (1 to Many) -->
+        <mxCell id="rel_fasilitas_laporan" edge="1" parent="1" source="cls_fasilitas" target="cls_laporan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#ef4444;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_fasilitas_laporan" value="1 .. *" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_fasilitas_laporan">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint x="15" y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Laporan to Pemeliharaan (1 to 1) -->
+        <mxCell id="rel_laporan_pemeliharaan" edge="1" parent="1" source="cls_laporan" target="cls_pemeliharaan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#a855f7;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_laporan_pemeliharaan" value="1 .. 1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_laporan_pemeliharaan">
+          <mxGeometry relative="1" x="0.1" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- User to AI Assistant (1 to Many) -->
+        <mxCell id="rel_user_ai" edge="1" parent="1" source="cls_user" target="cls_ai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#9333ea;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="80" />
+              <mxPoint x="1100" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_user_ai" value="1 .. *" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel_user_ai">
+          <mxGeometry relative="1" x="0.8" y="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

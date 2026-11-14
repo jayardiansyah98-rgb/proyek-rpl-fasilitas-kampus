@@ -1,0 +1,159 @@
+<mxfile host="app.diagrams.net" modified="2026-11-12T19:45:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+  <diagram id="seq-pelaporan" name="Sequence Diagram Pelaporan Fasilitas">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title" value="Sequence Diagram: Pelaporan Kerusakan Fasilitas &amp; Notifikasi WhatsApp" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="550" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 1. ACTOR: PENGGUNA -->
+        <mxCell id="ll_actor" value="Pengguna&#xa;(Mhs / Dosen)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#eff6ff;strokeColor=#3b82f6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="100" height="620" as="geometry" />
+        </mxCell>
+
+        <!-- 2. BOUNDARY: VIEW -->
+        <mxCell id="ll_view" value="«boundary»&#xa;FormLaporanView" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="70" width="120" height="620" as="geometry" />
+        </mxCell>
+
+        <!-- 3. CONTROLLER: LAPORAN CONTROLLER -->
+        <mxCell id="ll_ctrl" value="«controller»&#xa;LaporanController" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="70" width="130" height="620" as="geometry" />
+        </mxCell>
+
+        <!-- 4. MODEL: LAPORAN MODEL -->
+        <mxCell id="ll_model" value="«entity»&#xa;LaporanModel" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fefce8;strokeColor=#eab308;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="70" width="120" height="620" as="geometry" />
+        </mxCell>
+
+        <!-- 5. DATABASE -->
+        <mxCell id="ll_db" value="«database»&#xa;MySQL Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fef2f2;strokeColor=#ef4444;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="70" width="120" height="620" as="geometry" />
+        </mxCell>
+
+        <!-- 6. EXTERNAL: WHATSAPP SERVICE -->
+        <mxCell id="ll_wa" value="«service»&#xa;Fonnte WhatsApp API" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#f0fdf4;strokeColor=#22c55e;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="910" y="70" width="140" height="620" as="geometry" />
+        </mxCell>
+
+        <!-- ACTIVATIONS -->
+        <mxCell id="act_v1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#e2e8f0;strokeColor=#64748b;" vertex="1" parent="ll_view">
+          <mxGeometry x="55" y="70" width="10" height="520" as="geometry" />
+        </mxCell>
+
+        <mxCell id="act_c1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#e2e8f0;strokeColor=#64748b;" vertex="1" parent="ll_ctrl">
+          <mxGeometry x="60" y="140" width="10" height="420" as="geometry" />
+        </mxCell>
+
+        <mxCell id="act_m1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#fef08a;strokeColor=#ca8a04;" vertex="1" parent="ll_model">
+          <mxGeometry x="55" y="240" width="10" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="act_d1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#fecaca;strokeColor=#ef4444;" vertex="1" parent="ll_db">
+          <mxGeometry x="55" y="260" width="10" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="act_w1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#bbf7d0;strokeColor=#22c55e;" vertex="1" parent="ll_wa">
+          <mxGeometry x="65" y="420" width="10" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- MESSAGES -->
+
+        <!-- 1. Buka Halaman -->
+        <mxCell id="m1" value="1: Akses Menu Lapor Kerusakan()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="ll_actor" target="act_v1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="140" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2. Render Form -->
+        <mxCell id="m2" value="2: Tampilkan Form Pelaporan()" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="act_v1" target="ll_actor">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="170" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3. Submit Form -->
+        <mxCell id="m3" value="3: Submit (ruangan, fasilitas, foto, prioritas, deskripsi)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="ll_actor" target="act_c1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="210" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 4. Validasi Form & File -->
+        <mxCell id="m4" value="4: Validasi Form &amp; Upload File Foto()" style="html=1;align=left;spacingLeft=5;verticalAlign=top;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;strokeColor=#475569;" edge="1" parent="1" source="act_c1" target="act_c1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="240" />
+              <mxPoint x="490" y="270" />
+            </Array>
+            <mxPoint x="475" y="240" as="sourcePoint" />
+            <mxPoint x="475" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5. Simpan Data Laporan -->
+        <mxCell id="m5" value="5: createLaporan(dataLaporan, fotoUrl)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="act_c1" target="act_m1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="310" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 6. Insert ke Database -->
+        <mxCell id="m6" value="6: INSERT INTO laporan_kerusakan" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="act_m1" target="act_d1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="330" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 7. DB Callback -->
+        <mxCell id="m7" value="7: Return Success &amp; Insert ID" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="act_d1" target="act_m1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="390" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 8. Model Return -->
+        <mxCell id="m8" value="8: Return Kode Laporan (LAP-xxx)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="act_m1" target="act_c1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="410" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 9. Kirim WA ke Sarpras -->
+        <mxCell id="m9" value="9: sendWhatsAppNotification(noPetugas, alertPesan)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#22c55e;" edge="1" parent="1" source="act_c1" target="act_w1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="490" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 10. Callback WA -->
+        <mxCell id="m10" value="10: Status Message Sent (200 OK)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeColor=#22c55e;" edge="1" parent="1" source="act_w1" target="act_c1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="550" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 11. Controller Render Success -->
+        <mxCell id="m11" value="11: Set Flashdata &amp; Redirect()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="act_c1" target="act_v1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="600" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 12. View Tampilkan Sukses -->
+        <mxCell id="m12" value="12: Tampilkan Tiket Sukses &amp; Notifikasi Masuk" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;strokeColor=#475569;" edge="1" parent="1" source="act_v1" target="ll_actor">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="630" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
