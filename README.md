@@ -8,7 +8,7 @@ Aplikasi web manajemen sarana dan prasarana kampus berbasis **PHP Native (Arsite
 - Kelas : TI-1D-REGULER
 - Dosen Pengampu : Yudhistira Arie Wijaya, M.Kom
 
-## 👥👥Anggota Kelompok
+## 👥Anggota Kelompok
 
 - Ketua : Fajar Ma'ruf (41257191)
 - Anggota 1 : Eggi Alivia Rohmaht (41257187)
