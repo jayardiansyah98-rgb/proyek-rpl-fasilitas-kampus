@@ -2,7 +2,7 @@
 
 Aplikasi web manajemen sarana dan prasarana kampus berbasis **PHP Native (Arsitektur MVC)**, **MySQL (Normalisasi 3NF)**, **Bootstrap 5**, dan dilengkapi modul **Kecerdasan Buatan (AI)** untuk analisis kerusakan serta rekomendasi pemeliharaan prioritas.
 
-## 📕 Laporan Final PDF
+## 📕 Laporan Final PDF (Leo Ardiansyah Jailani)
 https://drive.google.com/file/d/1IwZRWSjZA6mmUwIxs1wBEyjLOL_L1bFN/view?usp=sharing
 
 ## Link Video Youtube (Leo Ardiansyah Jailani)
