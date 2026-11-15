@@ -1,0 +1,21 @@
+name: CI Fasilitas Kampus
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+    - name: Cek Syntax PHP
+      run: find app public -name "*.php" -exec php -l {} \;
+    - name: Cek File Database Ada
+      run: ls -R database
