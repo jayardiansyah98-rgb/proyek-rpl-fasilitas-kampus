@@ -5,7 +5,7 @@ Aplikasi web manajemen sarana dan prasarana kampus berbasis **PHP Native (Arsite
 ## 📕 Laporan Final PDF
 https://drive.google.com/file/d/1IwZRWSjZA6mmUwIxs1wBEyjLOL_L1bFN/view?usp=sharing
 
-## Link Video Youtube
+## Link Video Youtube (Leo Ardiansyah Jailani)
 https://youtu.be/1wmKV4yGTRY?si=bVkLwiZ_QqBpDI6M
 
 ## 👥Identitas Kelompok
