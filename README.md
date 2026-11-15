@@ -1,4 +1,4 @@
-# Sistem Informasi Pendataan Fasilitas Setiap Ruangan di Kampus STMIK IKMI Cirebon Berbasis Web Dilengkapi AI
+# Sistem Informasi Pendataan Fasilitas Setiap Ruangan di Kampus STMIK IKMI Cirebon Berbasis Web Dilengkapi AI di Lingkungan Kampus
 
 Aplikasi web manajemen sarana dan prasarana kampus berbasis **PHP Native (Arsitektur MVC)**, **MySQL (Normalisasi 3NF)**, **Bootstrap 5**, dan dilengkapi modul **Kecerdasan Buatan (AI)** untuk analisis kerusakan serta rekomendasi pemeliharaan prioritas.
 
